@@ -41,49 +41,6 @@
             opacity: 0.95;
         }
 
-        .tabs {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .tab-btn {
-            background: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.1em;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .tab-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .tab-btn.active {
-            background: #5a67d8;
-            color: white;
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -184,10 +141,16 @@
             margin-top: 60px;
         }
 
+        footer h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
             margin-top: 20px;
         }
 
@@ -202,6 +165,169 @@
             opacity: 0.8;
         }
 
+        /* Expanded view styles */
+        .expanded-view {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 1000;
+            overflow-y: auto;
+            animation: slideIn 0.3s ease;
+        }
+
+        .expanded-view.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .expanded-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .expanded-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .expanded-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .expanded-content h1 {
+            font-size: 2.5em;
+            color: #5a67d8;
+            margin-bottom: 20px;
+        }
+
+        .expanded-content .description {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .media-section {
+            margin: 40px 0;
+        }
+
+        .media-section h2 {
+            font-size: 1.8em;
+            color: #5a67d8;
+            margin-bottom: 20px;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .screenshot {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.05);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .download-section {
+            background: #f7fafc;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+
+        .download-section h2 {
+            font-size: 1.8em;
+            color: #5a67d8;
+            margin-bottom: 20px;
+        }
+
+        .download-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .download-btn {
+            background: #5a67d8;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            background: #4c51bf;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(90, 103, 216, 0.4);
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2em;
@@ -209,6 +335,15 @@
 
             .project-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .expanded-header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .expanded-content h1 {
+                font-size: 2em;
             }
         }
     </style>
@@ -220,11 +355,11 @@
             <p>Game Designer | Software Developer</p>
         </header>
 
-        <div id="Projects" class="tab-content active">
+        <div id="Projects">
             <div class="project-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/400x200/667eea/ffffff?text=Project+1" alt="Project 1" class="project-image">
+                    <img src="https://via.placeholder.com/400x200/667eea/ffffff?text=Getting+Through+It" alt="Getting Through It" class="project-image">
                     <div class="project-content">
                         <h3>Getting Through It</h3>
                         <p>A mod for Getting Over It with Bennett Foddy that reimagines the core gameplay</p>
@@ -234,14 +369,14 @@
                             <span class="tag">Game Mod</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://example.com/game1" class="btn btn-primary" target="_blank">Expand</a>
+                            <button class="btn btn-primary" onclick="expandProject('project1')">Expand</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/400x200/764ba2/ffffff?text=Project+2" alt="Project 2" class="project-image">
+                    <img src="https://via.placeholder.com/400x200/764ba2/ffffff?text=Pottery+Wheel" alt="Digital Pottery Wheel" class="project-image">
                     <div class="project-content">
                         <h3>Digital Pottery Wheel</h3>
                         <p>A digital art tool which emulates the process of shaping clay on a spinning wheel</p>
@@ -251,15 +386,15 @@
                             <span class="tag">Art Tool</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://example.com/game2" class="btn btn-primary" target="_blank">Expand</a>
+                            <button class="btn btn-primary" onclick="expandProject('project2')">Expand</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
-        <footer>=
+        <footer>
+            <h3>Socials</h3>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/seth-hahn-58194a333" target="_blank">LinkedIn</a>
                 <a href="mailto:sethehahn2004@gmail.com">sethehahn2004@gmail.com</a>
@@ -267,16 +402,115 @@
         </footer>
     </div>
 
+    <!-- Expanded View for Project 1 -->
+    <div id="project1" class="expanded-view">
+        <div class="expanded-header">
+            <div class="expanded-header-content">
+                <h2>Getting Through It</h2>
+                <button class="back-btn" onclick="closeExpanded('project1')">← Back to Projects</button>
+            </div>
+        </div>
+        <div class="expanded-content">
+            <h1>Getting Through It</h1>
+            <p class="description">
+                A comprehensive mod for Getting Over It with Bennett Foddy that reimagines the core gameplay mechanics. 
+                This project explores new movement systems and level design while maintaining the challenging spirit of the original game.
+                Add more detailed description about your project here, including development process, challenges faced, and key features.
+            </p>
+
+            <div class="project-tags">
+                <span class="tag">Unity</span>
+                <span class="tag">C#</span>
+                <span class="tag">Game Mod</span>
+            </div>
+
+            <div class="media-section">
+                <h2>Screenshots</h2>
+                <div class="screenshot-grid">
+                    <img src="https://via.placeholder.com/600x400/667eea/ffffff?text=Screenshot+1" alt="Screenshot 1" class="screenshot">
+                    <img src="https://via.placeholder.com/600x400/764ba2/ffffff?text=Screenshot+2" alt="Screenshot 2" class="screenshot">
+                    <img src="https://via.placeholder.com/600x400/5a67d8/ffffff?text=Screenshot+3" alt="Screenshot 3" class="screenshot">
+                    <img src="https://via.placeholder.com/600x400/4c51bf/ffffff?text=Screenshot+4" alt="Screenshot 4" class="screenshot">
+                </div>
+            </div>
+
+            <div class="media-section">
+                <h2>Video</h2>
+                <div class="video-container">
+                    <!-- Replace with your YouTube video embed -->
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="download-section">
+                <h2>Downloads & Links</h2>
+                <div class="download-links">
+                    <a href="https://example.com/download" class="download-btn" target="_blank">Download Game</a>
+                    <a href="https://github.com/yourusername/project" class="download-btn" target="_blank">GitHub Repository</a>
+                    <a href="https://itch.io/yourgame" class="download-btn" target="_blank">Play on itch.io</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Expanded View for Project 2 -->
+    <div id="project2" class="expanded-view">
+        <div class="expanded-header">
+            <div class="expanded-header-content">
+                <h2>Digital Pottery Wheel</h2>
+                <button class="back-btn" onclick="closeExpanded('project2')">← Back to Projects</button>
+            </div>
+        </div>
+        <div class="expanded-content">
+            <h1>Digital Pottery Wheel</h1>
+            <p class="description">
+                A digital art tool built in Unreal Engine that emulates the tactile process of shaping clay on a spinning pottery wheel.
+                This tool combines realistic physics simulation with intuitive controls to create an engaging creative experience.
+                Add more detailed description about your project here.
+            </p>
+
+            <div class="project-tags">
+                <span class="tag">Unreal</span>
+                <span class="tag">C++</span>
+                <span class="tag">Art Tool</span>
+            </div>
+
+            <div class="media-section">
+                <h2>Screenshots</h2>
+                <div class="screenshot-grid">
+                    <img src="https://via.placeholder.com/600x400/764ba2/ffffff?text=Screenshot+1" alt="Screenshot 1" class="screenshot">
+                    <img src="https://via.placeholder.com/600x400/667eea/ffffff?text=Screenshot+2" alt="Screenshot 2" class="screenshot">
+                    <img src="https://via.placeholder.com/600x400/5a67d8/ffffff?text=Screenshot+3" alt="Screenshot 3" class="screenshot">
+                </div>
+            </div>
+
+            <div class="media-section">
+                <h2>Demo Video</h2>
+                <div class="video-container">
+                    <!-- Replace with your YouTube video embed -->
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="download-section">
+                <h2>Downloads & Links</h2>
+                <div class="download-links">
+                    <a href="https://example.com/download" class="download-btn" target="_blank">Download Tool</a>
+                    <a href="https://github.com/yourusername/project" class="download-btn" target="_blank">GitHub Repository</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        function showTab(tabName) {
-            const tabs = document.querySelectorAll('.tab-content');
-            const buttons = document.querySelectorAll('.tab-btn');
-            
-            tabs.forEach(tab => tab.classList.remove('active'));
-            buttons.forEach(btn => btn.classList.remove('active'));
-            
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
+        function expandProject(projectId) {
+            document.getElementById(projectId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeExpanded(projectId) {
+            document.getElementById(projectId).classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
     </script>
 </body>
